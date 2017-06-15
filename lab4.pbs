@@ -1,0 +1,14 @@
+#!/bin/bash                                                                                                                                                                                                                                                   
+#PBS -t 1-4  
+#PBS -l nodes=2:ppn=2                                                                                                                          
+#PBS -l walltime=0:02:00                                                                                                                       
+#PBS -N krasnolob_lab4                                                                                                                       
+                                                                                                                                               
+cd $PBS_O_WORKDIR                                                                                                                              
+                                                                                                                                               
+eval "ls -la /mnt/work/tb395"                                                                                                                      
+eval "ml gcc"                                                                                                                                  
+eval "ml mpich"                                                                                                                                
+eval "mpirun -n 4 -f $PBS_NODEFILE ./lab4 > /mnt/work/tb395/res_$PBS_JOBID"                                                         
+eval "cp /mnt/work/tb395/res_* ~/"                                                                                                             
+eval "rm /mnt/work/tb395/res_*"

@@ -1,0 +1,3 @@
+ml gcc
+ml icc mpich
+mpic++ lab4.cpp -o lab4
